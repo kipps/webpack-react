@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Webpack settings</title>
+
+    <!--    Documentation of work on templates: https://github.com/jaketrent/html-webpack-template/blob/master/index.ejs-->
+
+    <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+    <% } %>
 </head>
 <body>
-<h1>Webpack</h1>
-testwww
-
+<div>
+    <h1>Webpack</h1>
+</div>
 <div id="root"></div>
 
+<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+<% } %>
 </body>
 </html>

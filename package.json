@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --open --config  webpack/webpack.dev.conf.js",
-    "build": "webpack --config webpack/webpack.build.conf.js"
+    "build": "webpack --config webpack/webpack.build.conf.js",
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "build-storybook"
   },
   "browserslist": [
     "last 1 version",
@@ -24,6 +26,11 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
+    "@storybook/addon-actions": "^5.3.13",
+    "@storybook/addon-links": "^5.3.13",
+    "@storybook/addons": "^5.3.13",
+    "@storybook/preset-create-react-app": "^1.5.2",
+    "@storybook/react": "^5.3.13",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
     "babel-preset-react": "^6.24.1",

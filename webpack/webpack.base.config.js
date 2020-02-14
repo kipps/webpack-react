@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const PATHS = {
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../dist'),
-    assets: './dist/static'
+    assets: './static'
 };
 
 module.exports = {
@@ -18,22 +18,22 @@ module.exports = {
         app: PATHS.src
     },
     output: {
-        filename: `${PATHS.assets}js/[name].js`,
+        filename: `${PATHS.assets}/js/[name].[chunkhash].js`,
         path: PATHS.dist,
         publicPath: ''
     },
-    // optimization: {
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             vendor: {
-    //                 name: 'vendor',
-    //                 test: /node_modules/,
-    //                 chunks: 'vendor',
-    //                 enforce: true
-    //             }
-    //         }
-    //     }
-    // },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    name: 'vendors',
+                    test: /node_modules/,
+                    chunks: 'all',
+                    enforce: true
+                }
+            }
+        }
+    },
     module: {
         rules: [
             {
@@ -41,15 +41,6 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: '/node-modules/'
             },
-            // {
-            //     test: /\.(js|jsx|jsp)$/,
-            //     loader: 'babel-loader',
-            //     options: {
-            //         loader: {
-            //             scss: 'style-loader!css-loader!sass-loader'
-            //         }
-            //     }
-            // },
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'file-loader',
@@ -95,14 +86,14 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // all options are optional
-            filename: `${PATHS.assets}/css/[name].css`,
+            filename: `${PATHS.assets}/css/[name].[contenthash].css`,
             chunkFilename: '[id].css',
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),
         new HtmlWebpackPlugin({
-            hash: false,
             template: `${PATHS.src}/index.html`,
-            filename: "./index.html"
+            filename: "./index.html",
+            inject: false
         }),
         new CopyWebpackPlugin([
             { from: `${PATHS.src}/assets/img`, to: `${PATHS.dist}/img`},

@@ -1,7 +1,9 @@
 body {
   margin: 30px;
-  display: flex;
-  * {
-    text-decoration: underline;
-  }
+}
+
+
+#root  {
+  display: block;
+  width: 100%;
 }
