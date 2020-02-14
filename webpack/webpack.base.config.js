@@ -41,6 +41,15 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: '/node-modules/'
             },
+            // {
+            //     test: /\.(js|jsx|jsp)$/,
+            //     loader: 'babel-loader',
+            //     options: {
+            //         loader: {
+            //             scss: 'style-loader!css-loader!sass-loader'
+            //         }
+            //     }
+            // },
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'file-loader',
