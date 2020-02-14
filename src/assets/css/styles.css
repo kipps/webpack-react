@@ -1,0 +1,9 @@
+body {
+    background: coral;
+    color: white;
+
+}
+
+body{
+    display: flex;
+}
